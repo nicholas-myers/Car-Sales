@@ -7,6 +7,8 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 const App = (props) => {
+// console.log(props)
+// console.log(addFeature())
 
   return (
     <div className="boxes">
@@ -15,15 +17,24 @@ const App = (props) => {
         <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
-        <Total car={props.car} additionalPrice={props.additionalPrice} />
+        <AdditionalFeatures 
+        additionalFeatures={props.additionalFeatures} />
+        <Total 
+        car={props.car} 
+        additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
 
-const mappropsToProps = state => {
+const mapStateToProps = state => {
   console.log({ state })
+
+  return {
+    additionalFeatures: state.additionalFeatures,
+    additionalPrice: state.additionalPrice,
+    car: state.car
+  }
 }
 
-export default connect(mappropsToProps, {})(App);
+export default connect(mapStateToProps, {})(App);
