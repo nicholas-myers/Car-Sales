@@ -1,6 +1,6 @@
-import { ADD_FEATURE } from "../actions/carActions";
+import {ADD_FEATURE} from "../actions/carActions";
 
-export const carState = {
+export const initialState = {
   additionalPrice: 0,
   car: {
     price: 26395,
@@ -17,18 +17,20 @@ export const carState = {
   ],
 };
 
-export const carReducer = (state = carState, action) => {
+export const carReducer = (state = initialState, action) => {
+  // console.log(action)
   switch (action.type) {
     case ADD_FEATURE:
-      console.log("this is happening: " + action.payload);
       return {
-        ...state,
-        car: {
-          ...state.car,
-          features: [...state.car.features, action.payload]
-        }
-      };
+          ...state,
+          car: {
+            ...state.car,
+            features: [...state.car.features, action.payload]
+          }
+        };
     default:
       return state;
   }
 };
+
+
